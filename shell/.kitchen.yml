@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: shell
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+
+suites:
+  - name: default
+    provisioner:
+      arguments:
+        - /tmp/kitchen/data
+        - /opt/webapp
+        - webapp
+    verifier:
+      inspec_tests:
+        - test/integration/default
